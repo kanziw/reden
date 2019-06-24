@@ -1,8 +1,6 @@
 import yargs from 'yargs'
-import Promise from 'bluebird'
-require('babel-runtime/core-js/promise').default = Promise
-import Config from './config'
 import { query } from './common'
+import Config from './config'
 import GitSash, { ConfigKey } from './git'
 
 const argv = yargs.argv
@@ -33,7 +31,7 @@ let commandMap = {
   'sync': 'synchronizeSpecificBranch',
   'master': 'mergeDevelopToMasterAndPush',
   'prune': 'pruneFromAllRemotes',
-  'pp': 'removeRebasedBranches',
+  'pp': 'removeRebasedBranches'
 }
 
 module.exports = function (command) {
@@ -56,5 +54,3 @@ module.exports = function (command) {
     })
   }
 }
-
-

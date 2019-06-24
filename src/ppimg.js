@@ -1,5 +1,3 @@
-import Promise from 'bluebird'
-require('babel-runtime/core-js/promise').default = Promise
 import sh from 'shell-helper'
 import fs from 'fs'
 import os from 'os'
@@ -60,7 +58,7 @@ export default function ImagePostProcessor () {
     for (let i = 0; i < files.length; i++) {
       const f = files[ i ]
       const src = path.join(desktop, f)
-      const dst = path.join(desktop, files.length == 1 ? `screen.jpg` : `screen_${lpad(i + 1, 2)}.jpg`)
+      const dst = path.join(desktop, files.length === 1 ? `screen.jpg` : `screen_${lpad(i + 1, 2)}.jpg`)
       await downsizeImage(options.size, src, dst)
       if (options.removeAfter) {
         await exec(`rm -f ${src}`, { doNotAsk: true })
@@ -78,6 +76,6 @@ export default function ImagePostProcessor () {
 
   return {
     getLatestNScreenCaptures,
-    process,
+    process
   }
 }

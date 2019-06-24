@@ -2,8 +2,6 @@
 // git push --set-upstream origin $BRANCH_NAME
 // open https://github.com/taggledev/peeper/compare/develop...redism:$BRANCH_NAME?expand=0
 
-import Promise from 'bluebird'
-require('babel-runtime/core-js/promise').default = Promise
 require('colors')
 import sh from 'shell-helper'
 import { exec as _exec, query } from './common'
@@ -24,7 +22,6 @@ function replaceBranchNameForWeb (branchName) {
 }
 
 export default function GitSash (config) {
-
   const exec = command => _exec(command, { silent: true, doNotAsk: !config.askBeforeRunCommand })
 
   async function iterateRemote (fn) {
@@ -193,7 +190,7 @@ export default function GitSash (config) {
     removeRebasedBranches,
     createAndOpenPullRequest,
     mergeDevelopToMasterAndPush,
-    synchronizeSpecificBranch,
+    synchronizeSpecificBranch
   }
 }
 
